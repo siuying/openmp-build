@@ -1,0 +1,19 @@
+name: "Release"
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: [self-hosted, mm1]
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./build.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: libomp
+          path:
+            - frameworks/*
+            - lib-*/*
