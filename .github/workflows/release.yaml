@@ -13,7 +13,9 @@ jobs:
       - run: ./build.sh
       - uses: actions/upload-artifact@v3
         with:
-          name: libomp
-          path:
-            - frameworks/*
-            - lib-*/*
+          name: libomp-frameworks
+          path: frameworks/*
+      - uses: actions/upload-artifact@v3
+        with:
+          name: libomp-libraries
+          path: lib-*/*
