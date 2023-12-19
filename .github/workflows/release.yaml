@@ -7,7 +7,7 @@ permissions:
   contents: read
 jobs:
   build:
-    runs-on: [self-hosted, mm1]
+    runs-on: [self-hosted, macOS, arm64]
     steps:
       - uses: actions/checkout@v3
       - run: ./build.sh
