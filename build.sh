@@ -42,8 +42,6 @@ xcodebuild -create-xcframework -library lib-OS64/lib/libomp.a -headers lib-OS64/
   -library lib-SIMULATORARM64/lib/libomp.a -headers lib-SIMULATORARM64/include \
   -output "frameworks/ios/OpenMP.xcframework"
 
-rm -rf "Sources/OpenMP_iOS/OpenMP.xcframework"
-mv frameworks/ios/OpenMP.xcframework Sources/OpenMP_iOS
 # Build macOS
 for PLATFORM in "MAC" "MAC_ARM64"; do
   build $PLATFORM "10.13"
@@ -57,6 +55,3 @@ mkdir -p lib-MAC-universal/lib/
 lipo -create -output lib-MAC-universal/lib/libomp.a lib-MAC/lib/libomp.a lib-MAC_ARM64/lib/libomp.a
 xcodebuild -create-xcframework -library lib-MAC-universal/lib/libomp.a -headers lib-MAC/include \
   -output "frameworks/mac/OpenMP.xcframework"
-
-rm -rf "Sources/OpenMP_Mac/OpenMP.xcframework"
-mv frameworks/mac/OpenMP.xcframework Sources/OpenMP_Mac
